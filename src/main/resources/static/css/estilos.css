@@ -1,0 +1,46 @@
+/* Identidade Visual Unesp — Sistema de Inscrição */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333333;
+}
+h1, h2, h3, .navbar-brand {
+    color: #0000CC !important;
+}
+
+a, .btn-link {
+    color: #0000CC !important;
+}
+a:hover, .btn-link:hover {
+    color: #1ca9da !important;
+    text-decoration: underline;
+}
+.btn-primary, .bg-primary {
+    background-color: #0000CC !important;
+    border: none;
+}
+.btn-outline-primary {
+    color: #0000CC !important;
+    border-color: #0000CC !important;
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background-color: #1ca9da !important;
+    color: #fff !important;
+    border-color: #1ca9da !important;
+}
+.badge.bg-warning.text-dark {
+    background-color: #ffc107 !important;
+    color: #333 !important;
+}
+.badge.bg-success {
+    background-color: #198754 !important;
+}
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+}
+footer {
+    border-top: 2px solid #0000cc;
+}
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,70,0.05);
+}

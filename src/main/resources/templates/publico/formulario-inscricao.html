@@ -1,0 +1,84 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragmentos/header :: head}"></head>
+  <body>
+    <div th:replace="~{fragmentos/header :: header}"></div>
+    <main class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+          <h2 class="mb-4" style="color: #0000cc">Formulário de Inscrição</h2>
+          <div
+            th:if="${erro}"
+            class="alert alert-danger"
+            th:text="${erro}"
+          ></div>
+          <form
+            th:action="@{/inscricao}"
+            method="post"
+            th:object="${inscricao}"
+          >
+            <div class="mb-3">
+              <label class="form-label" for="nome">Nome completo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                th:field="*{nome}"
+                required
+                maxlength="100"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="email">E-mail</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                th:field="*{email}"
+                required
+                maxlength="100"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="curso">Curso</label>
+              <input
+                type="text"
+                class="form-control"
+                id="curso"
+                th:field="*{curso}"
+                required
+                maxlength="80"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="periodo">Período</label>
+              <select
+                class="form-select"
+                id="periodo"
+                th:field="*{periodo}"
+                required
+              >
+                <option value="" th:text="'Selecione...'"></option>
+                <option value="Matutino">Matutino</option>
+                <option value="Vespertino">Vespertino</option>
+                <option value="Noturno">Noturno</option>
+                <option value="Integral">Integral</option>
+              </select>
+            </div>
+            <div class="d-flex gap-2">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="background-color: #0000cc"
+              >
+                Enviar inscrição
+              </button>
+              <a class="btn btn-outline-secondary" th:href="@{/}">Voltar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+  </body>
+</html>

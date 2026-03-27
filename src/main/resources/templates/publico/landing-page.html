@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/header :: head}"></head>
+    <body>
+        <div th:replace="~{fragmentos/header :: header}"></div>
+        <main class="container py-4">
+            <section class="text-center mb-5">
+                <h1 th:text="${evento.nome}" style="color: #0000CC;">Semana Acadêmica de Tecnologia</h1>
+                <p class="lead" th:text="${evento.descricao}"></p>
+            </section>
+            <section class="row justify-content-center mb-2">
+                <div class="col-md-6">
+                    <ul class="list-group shadow-sm mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Data:</strong></span>
+                            <span th:text="${evento.data}">31/07/2026</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Local:</strong></span>
+                            <span th:text="${evento.local}"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Vagas disponíveis:</strong></span>
+                            <span class="badge rounded-pill" style="background-color:#1ca9da; color:#fff;"
+                                  th:text="${evento.vagas}">150</span>
+                        </li>
+                    </ul>
+                    <div th:if="${mensagem}" class="alert alert-success" th:text="${mensagem}"></div>
+                </div>
+            </section>
+            <div class="d-flex justify-content-center gap-3 mb-4">
+                <a class="btn btn-primary" style="background-color:#0000CC;" th:href="@{/inscricao}">Inscreva-se</a>
+                <a class="btn btn-outline-primary" th:href="@{/status}">Consultar status</a>
+                <a class="btn btn-link" style="color:#0000cc;" th:href="@{/docente/login}">Área do docente</a>
+            </div>
+        </main>
+        <div th:replace="~{fragmentos/footer :: footer}"></div>
+    </body>
+</html>

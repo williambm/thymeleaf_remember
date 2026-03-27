@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/header :: head}"></head>
+<body>
+<div th:replace="~{fragmentos/header :: header}"></div>
+<main class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0" style="color:#0000cc;">Lista de Inscrições</h2>
+        <a class="btn btn-outline-secondary" th:href="@{/docente/logout}">Sair</a>
+    </div>
+    <div th:if="${#lists.isEmpty(inscricoes)}" class="alert alert-warning">
+        Nenhuma inscrição cadastrada até o momento.
+    </div>
+    <div th:if="${!#lists.isEmpty(inscricoes)}">
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Curso</th>
+                        <th>Período</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="inscricao, idx : ${inscricoes}">
+                        <td th:text="${idx.index + 1}"></td>
+                        <td th:text="${inscricao.nome}"></td>
+                        <td th:text="${inscricao.email}"></td>
+                        <td th:text="${inscricao.curso}"></td>
+                        <td th:text="${inscricao.periodo}"></td>
+                        <td>
+                            <span th:classappend="
+                                ${inscricao.status.name() == 'PENDENTE'} ? 'badge bg-warning text-dark' :
+                                (${inscricao.status.name() == 'DEFERIDA'} ? 'badge bg-success' : 'badge bg-danger')"
+                                th:text="${inscricao.status}">
+                            </span>
+                        </td>
+                        <td>
+                            <div th:if="${inscricao.status.name() == 'PENDENTE'}" class="d-flex gap-1">
+                                <form th:action="@{|/docente/inscricoes/${inscricao.id}/deferir|}" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-success">Deferir</button>
+                                </form>
+                                <form th:action="@{|/docente/inscricoes/${inscricao.id}/indeferir|}" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-danger">Indeferir</button>
+                                </form>
+                            </div>
+                            <span th:if="${inscricao.status.name() != 'PENDENTE'}" class="text-muted small fst-italic">-</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<div th:replace="~{fragmentos/footer :: footer}"></div>
+</body>
+</html>
