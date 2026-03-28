@@ -11,8 +11,9 @@ public class Inscricao {
 
     private String nome;
     private String email;
-    private String curso;
-    private String periodo;
+
+    @Enumerated(EnumType.STRING)
+    private AreaFormacao areaFormacao;
 
     @Enumerated(EnumType.STRING)
     private StatusInscricao status;
@@ -45,20 +46,12 @@ public class Inscricao {
         this.email = email;
     }
 
-    public String getCurso() {
-        return curso;
+    public AreaFormacao getAreaFormacao() {
+        return areaFormacao;
     }
 
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    public String getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
+    public void setAreaFormacao(AreaFormacao areaFormacao) {
+        this.areaFormacao = areaFormacao;
     }
 
     public StatusInscricao getStatus() {
