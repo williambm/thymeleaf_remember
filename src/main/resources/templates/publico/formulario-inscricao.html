@@ -40,29 +40,15 @@
               />
             </div>
             <div class="mb-3">
-              <label class="form-label" for="curso">Curso</label>
-              <input
-                type="text"
-                class="form-control"
-                id="curso"
-                th:field="*{curso}"
-                required
-                maxlength="80"
-              />
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="periodo">Período</label>
+              <label class="form-label" for="areaFormacao">Área de formação</label>
               <select
                 class="form-select"
-                id="periodo"
-                th:field="*{periodo}"
+                id="areaFormacao"
+                th:field="*{areaFormacao}"
                 required
               >
-                <option value="" th:text="'Selecione...'"></option>
-                <option value="Matutino">Matutino</option>
-                <option value="Vespertino">Vespertino</option>
-                <option value="Noturno">Noturno</option>
-                <option value="Integral">Integral</option>
+                <option value="">Selecione...</option>
+                <option th:each="area : ${areas}" th:value="${area}" th:text="${area.label}"></option>
               </select>
             </div>
             <div class="d-flex gap-2">

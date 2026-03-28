@@ -1,5 +1,6 @@
 package br.unesp.evento.controller;
 
+import br.unesp.evento.model.AreaFormacao;
 import br.unesp.evento.model.Evento;
 import br.unesp.evento.model.Inscricao;
 import br.unesp.evento.service.InscricaoServico;
@@ -28,6 +29,7 @@ public class InscricaoControlador {
     public String formularioInscricao(Model model) {
         model.addAttribute("evento", evento);
         model.addAttribute("inscricao", new Inscricao());
+        model.addAttribute("areas", AreaFormacao.values());
         return "publico/formulario-inscricao";
     }
 
@@ -40,6 +42,7 @@ public class InscricaoControlador {
             model.addAttribute("erro", e.getMessage());
             model.addAttribute("evento", evento);
             model.addAttribute("inscricao", inscricao);
+            model.addAttribute("areas", AreaFormacao.values());
             return "publico/formulario-inscricao";
         }
         return "redirect:/";

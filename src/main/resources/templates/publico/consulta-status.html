@@ -23,8 +23,7 @@
                 <ul class="list-group">
                     <li class="list-group-item"><strong>Nome:</strong> <span th:text="${inscricao.nome}"></span></li>
                     <li class="list-group-item"><strong>E-mail:</strong> <span th:text="${inscricao.email}"></span></li>
-                    <li class="list-group-item"><strong>Curso:</strong> <span th:text="${inscricao.curso}"></span></li>
-                    <li class="list-group-item"><strong>Período:</strong> <span th:text="${inscricao.periodo}"></span></li>
+                    <li class="list-group-item"><strong>Área de formação:</strong> <span th:text="${inscricao.areaFormacao.label}"></span></li>
                     <li class="list-group-item">
                         <strong>Status:</strong>
                         <span th:classappend="
